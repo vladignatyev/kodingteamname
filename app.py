@@ -24,7 +24,7 @@ app.config.update(HTTP_PREFIX='http://')
 
 words = nltk.corpus.words.words()
 random.shuffle(words)
-app.config['words'] = words[:1000]
+app.config['words'] = words[:10000]
 
 
 _names = pynamegen.Names(pynamegen.EN_ALPHABET)
