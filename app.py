@@ -22,9 +22,9 @@ app.secret_key = 'kapsd-qjkjz xvscv[widf d[f0iya d09209 -S{PS]q ] } S}Q }S{S Q{}
 app.config.update(HTTP_PREFIX='http://')
 
 
-words = nltk.corpus.words.words()
+words = nltk.corpus.words.words('en-basic')
 random.shuffle(words)
-app.config['words'] = words[:10000]
+app.config['words'] = words
 
 
 _names = pynamegen.Names(pynamegen.EN_ALPHABET)
