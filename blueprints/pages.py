@@ -21,10 +21,12 @@ def generate():
     true_random = request.args.get('true_random', 'off') == 'on'
     use_numbers = request.args.get('use_numbers', 'off') == 'on'
 
+    character_set = pynamegen.EN_ALPHABET
     if use_numbers:
-        _names = pynamegen.Names().generator(num_words=num_words, max_symbols=max_symbols, use_enchant=not true_random)
-    else:
-        _names = current_app.config['names']
+        character_set += pynamegen.DIGITS
+
+    _names = pynamegen.Names(character_set).generator(num_words=num_words, max_symbols=max_symbols, use_enchant=False, 
+        use_words=not true_random, words=current_app.config['words'])
 
 
     variants = []

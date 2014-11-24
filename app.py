@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import random
+import nltk
+nltk.data.path.append('./nltk_data/')
 
 from werkzeug.routing import BaseConverter
 
@@ -20,8 +22,13 @@ app.secret_key = 'kapsd-qjkjz xvscv[widf d[f0iya d09209 -S{PS]q ] } S}Q }S{S Q{}
 app.config.update(HTTP_PREFIX='http://')
 
 
+words = nltk.corpus.words.words()
+random.shuffle(words)
+app.config['words'] = words[:1000]
+
+
 _names = pynamegen.Names(pynamegen.EN_ALPHABET)
-app.config['names'] = _names.generator()
+app.config['names'] = _names.generator(use_enchant=False, use_words=True, words=app.config['words'])
 
 app.register_blueprint(pages)
 
