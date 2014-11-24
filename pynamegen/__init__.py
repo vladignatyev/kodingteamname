@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import enchant
 import random
 
@@ -15,13 +16,14 @@ class Names(object):
         else:
             d = None
 
+        characters_length = len(self.characters)
+
         while True:
             result = []
-            characters_length = len(self.characters)
 
             for word_i in range(0, num_words):
                 word_len = random.randint(min_symbols, max_symbols)
-                word = ''
+                word = u''
                 for i in range(0, word_len):
                     word += self.characters[random.randint(0, characters_length-1)]
                 

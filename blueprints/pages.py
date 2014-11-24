@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import redirect, Blueprint, render_template, current_app, send_from_directory,request, abort, redirect, url_for, make_response, Response, jsonify
 import pynamegen
 
@@ -8,7 +10,7 @@ pages = Blueprint('pages', __name__)
 def home():
     variants = []
     for i in range(0,10):
-        variants += [[word.title() for word in current_app.config['names'].next().split(' ')]]
+        variants += [[word.title() for word in current_app.config['names'].next().split(u' ')]]
 
     return render_template('index.html', variants=variants)
 
