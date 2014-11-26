@@ -28,8 +28,9 @@ class Names(object):
                 word = u''
 
                 if use_words:
-                    dictionary = filter(lambda w: len(w) == word_len, words)
-                    word = words[random.randint(0, len(dictionary) - 1)]
+                    dictionary = filter(lambda w: len(str(w)) == word_len, words)
+                    # dictionary = ['a', 'b']
+                    word = dictionary[random.randint(0, len(dictionary) - 1)]
                 else:
                     for i in range(0, word_len):
                         word += self.characters[random.randint(0, characters_length-1)]
